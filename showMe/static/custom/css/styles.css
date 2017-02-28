@@ -31,24 +31,22 @@ div.content-tab-menu div.list-group > a {
 
 div.content-tab-menu div.list-group > a .glyphicon,
 div.content-tab-menu div.list-group > a .fa {
-    color: #5A55A3;
+    color: yellowgreen;
 }
 
 div.content-tab-menu div.list-group > a:first-child {
     border-top-right-radius: 0;
-    -moz-border-top-right-radius: 0;
 }
 
 div.content-tab-menu div.list-group > a:last-child {
     border-bottom-right-radius: 0;
-    -moz-border-bottom-right-radius: 0;
 }
 
 div.content-tab-menu div.list-group > a.active,
 div.content-tab-menu div.list-group > a.active .glyphicon,
 div.content-tab-menu div.list-group > a.active .fa {
-    background-color: #5A55A3;
-    background-image: #5A55A3;
+    background-color: yellowgreen;
+    border-color: yellowgreen;
     color: #ffffff;
 }
 
@@ -61,16 +59,33 @@ div.content-tab-menu div.list-group > a.active:after {
     border-left: 0;
     border-bottom: 13px solid transparent;
     border-top: 13px solid transparent;
-    border-left: 10px solid #5A55A3;
+    border-left: 10px solid yellowgreen;
 }
 
 div.content-tab-content {
     background-color: #ffffff;
-    /* border: 1px solid #eeeeee; */
     padding-left: 20px;
     padding-top: 10px;
 }
 
 div.content-tab div.content-tab-content:not(.active) {
     display: none;
+}
+
+/* navbar */
+
+.navbar-default{
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.navbar-default .navbar-nav > li > a{
+    background-color: transparent;
+    border-radius: 5px;
+    border: 2px solid #555;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+    margin-top: 2px;
+    padding: 10px;
 }

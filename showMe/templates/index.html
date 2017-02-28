@@ -14,6 +14,7 @@
 
 <div class="container-fluid">
     <div class="row">
+        <!--# side menu-->
         <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 content-tab-container">
             <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3 content-tab-menu">
                 <div class="list-group">
@@ -24,71 +25,45 @@
                         <i class="fa fa-database fa-3x"></i><br/>Mysql
                     </a>
                     <a href="#" class="list-group-item text-center">
-                        <h4 class="glyphicon glyphicons-embed-close"></h4><br/>Localhost<span class="glyphicons glyphicons-embed-close"></span>
+                        <i class="fa fa-exclamation-triangle fa-3x"></i><br/>Localhost
                     </a>
                     <a href="#" class="list-group-item text-center">
-                        <h4 class="glyphicon glyphicon-cutlery"></h4><br/>Log
-                    </a>
-                    <a href="#" class="list-group-item text-center">
-                        <h4 class="glyphicon glyphicon-credit-card"></h4><br/>Other things
+                        <i class="fa fa-area-chart fa-3x"></i><br/>Other things
                     </a>
                 </div>
             </div>
+            <!--content panels-->
             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 content-tab">
-                <!-- flight section -->
+                <!-- apache section -->
                 <div class="content-tab-content active">
-                    <center>
-                        <h1 class="glyphicon glyphicon-plane" style="font-size:14em;color:#55518a"></h1>
-                        <h2 style="margin-top: 0;color:#55518a">Cooming Soon</h2>
-                        <h3 style="margin-top: 0;color:#55518a">Flight Reservation</h3>
-                    </center>
+                    <h2 style="margin-top: 0;color:#55518a">Coming Soon</h2>
                 </div>
-                <!-- train section -->
+                <!-- mysql section -->
                 <div class="content-tab-content">
-                    <center>
-                        <h1 class="glyphicon glyphicon-road" style="font-size:12em;color:#55518a"></h1>
-                        <h2 style="margin-top: 0;color:#55518a">Cooming Soon</h2>
-                        <h3 style="margin-top: 0;color:#55518a">Train Reservation</h3>
-                    </center>
+                    <h2 style="margin-top: 0;color:#55518a">Coming Soon</h2>
                 </div>
-
-                <!-- hotel search -->
+                <!-- other section -->
                 <div class="content-tab-content">
-                    <center>
-                        <h1 class="glyphicon glyphicon-home" style="font-size:12em;color:#55518a"></h1>
-                        <h2 style="margin-top: 0;color:#55518a">Cooming Soon</h2>
-                        <h3 style="margin-top: 0;color:#55518a">Hotel Directory</h3>
-                    </center>
+                    <h2 style="margin-top: 0;color:#55518a">Coming Soon</h2>
                 </div>
                 <div class="content-tab-content">
-                    <center>
-                        <h1 class="glyphicon glyphicon-cutlery" style="font-size:12em;color:#55518a"></h1>
-                        <h2 style="margin-top: 0;color:#55518a">Cooming Soon</h2>
-                        <h3 style="margin-top: 0;color:#55518a">Restaurant Diirectory</h3>
-                    </center>
-                </div>
-                <div class="content-tab-content">
-                    <center>
-                        <h1 class="glyphicon glyphicon-credit-card" style="font-size:12em;color:#55518a"></h1>
-                        <h2 style="margin-top: 0;color:#55518a">Cooming Soon</h2>
-                        <h3 style="margin-top: 0;color:#55518a">Credit Card</h3>
-                    </center>
+                    <h2 style="margin-top: 0;color:#55518a">Coming Soon</h2>
                 </div>
             </div>
         </div>
     </div>
 </div>
 <script>
-    $(document).ready(function() {
-    $("div.content-tab-menu>div.list-group>a").click(function(e) {
-        e.preventDefault();
-        $(this).siblings('a.active').removeClass("active");
-        $(this).addClass("active");
-        var index = $(this).index();
-        $("div.content-tab>div.content-tab-content").removeClass("active");
-        $("div.content-tab>div.content-tab-content").eq(index).addClass("active");
+    $(document).ready(function () {
+        $("div.content-tab-menu>div.list-group>a").click(function (e) {
+            e.preventDefault();
+            $(this).siblings('a.active').removeClass("active");
+            $(this).addClass("active");
+            var index = $(this).index();
+            $("div.content-tab>div.content-tab-content").removeClass("active");
+            $("div.content-tab>div.content-tab-content").eq(index).addClass("active");
+        });
     });
-});
 </script>
 </body>
 </html>

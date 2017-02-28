@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ShowMe</title>
+    <script type="text/javascript" src="/static/jQuery/jquery-2.2.4.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/bootstrap/css/bootstrap.min.css"/>
+    <script type="text/javascript" src="/static/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/static/custom/js/tabs.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/custom/css/styles.css"/>
+</head>
+<body>
+{% include 'top.html' %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 content-tab-container">
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 content-tab-menu">
+                <div class="list-group">
+                    <a href="#" class="list-group-item active text-center">
+                        <h4 class="glyphicon glyphicon-plane"></h4><br/>Flight
+                    </a>
+                    <a href="#" class="list-group-item text-center">
+                        <h4 class="glyphicon glyphicon-road"></h4><br/>Train
+                    </a>
+                    <a href="#" class="list-group-item text-center">
+                        <h4 class="glyphicon glyphicon-home"></h4><br/>Hotel
+                    </a>
+                    <a href="#" class="list-group-item text-center">
+                        <h4 class="glyphicon glyphicon-cutlery"></h4><br/>Restaurant
+                    </a>
+                    <a href="#" class="list-group-item text-center">
+                        <h4 class="glyphicon glyphicon-credit-card"></h4><br/>Credit Card
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 content-tab">
+                <!-- flight section -->
+                <div class="content-tab-content active">
+                    <center>
+                        <h1 class="glyphicon glyphicon-plane" style="font-size:14em;color:#55518a"></h1>
+                        <h2 style="margin-top: 0;color:#55518a">Cooming Soon</h2>
+                        <h3 style="margin-top: 0;color:#55518a">Flight Reservation</h3>
+                    </center>
+                </div>
+                <!-- train section -->
+                <div class="content-tab-content">
+                    <center>
+                        <h1 class="glyphicon glyphicon-road" style="font-size:12em;color:#55518a"></h1>
+                        <h2 style="margin-top: 0;color:#55518a">Cooming Soon</h2>
+                        <h3 style="margin-top: 0;color:#55518a">Train Reservation</h3>
+                    </center>
+                </div>
+
+                <!-- hotel search -->
+                <div class="content-tab-content">
+                    <center>
+                        <h1 class="glyphicon glyphicon-home" style="font-size:12em;color:#55518a"></h1>
+                        <h2 style="margin-top: 0;color:#55518a">Cooming Soon</h2>
+                        <h3 style="margin-top: 0;color:#55518a">Hotel Directory</h3>
+                    </center>
+                </div>
+                <div class="content-tab-content">
+                    <center>
+                        <h1 class="glyphicon glyphicon-cutlery" style="font-size:12em;color:#55518a"></h1>
+                        <h2 style="margin-top: 0;color:#55518a">Cooming Soon</h2>
+                        <h3 style="margin-top: 0;color:#55518a">Restaurant Diirectory</h3>
+                    </center>
+                </div>
+                <div class="content-tab-content">
+                    <center>
+                        <h1 class="glyphicon glyphicon-credit-card" style="font-size:12em;color:#55518a"></h1>
+                        <h2 style="margin-top: 0;color:#55518a">Cooming Soon</h2>
+                        <h3 style="margin-top: 0;color:#55518a">Credit Card</h3>
+                    </center>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function() {
+    $("div.content-tab-menu>div.list-group>a").click(function(e) {
+        e.preventDefault();
+        $(this).siblings('a.active').removeClass("active");
+        $(this).addClass("active");
+        var index = $(this).index();
+        $("div.content-tab>div.content-tab-content").removeClass("active");
+        $("div.content-tab>div.content-tab-content").eq(index).addClass("active");
+    });
+});
+</script>
+</body>
+</html>

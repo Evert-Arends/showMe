@@ -43,6 +43,7 @@ div.content-tab-menu div.list-group > a {
 
 .list-group-item{
     background-color: #555;
+    border: 1px solid white;
 }
 
 a.list-group-item{

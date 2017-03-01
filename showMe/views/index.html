@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="/static/bootstrap/css/bootstrap.min.css"/>
     <script type="text/javascript" src="/static/bootstrap/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="/static/custom/css/styles.css"/>
+    <script type="text/javascript" src="/static/custom/js/ui.js"></script>
 </head>
 <body>
 {% include 'top.html' %}
@@ -16,5 +17,11 @@
     <h2 class="page-header">showMe</h2>
 </div>
 
+<div class="col-md-12">
+    <div class="form-group">
+        <label for="LogArea">ApacheLog:</label>
+        <textarea class="form-control" rows="100" id="LogArea" data-name="LogBox">Test!</textarea>
+    </div>
+</div>
 </body>
 </html>

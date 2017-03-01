@@ -11,3 +11,8 @@ def index():
 @app.route('/static/<path:path>')
 def static(path):
     return send_from_directory('static', path)
+
+
+@app.route("/license/")
+def view_license():
+    return render_template("license.html")

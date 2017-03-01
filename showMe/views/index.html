@@ -3,25 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <title>ShowMe</title>
-    <link rel="icon" type="image/png" href="images/favicon.ico">
     <script type="text/javascript" src="/static/jQuery/jquery-2.2.4.js"></script>
     <link rel="stylesheet" type="text/css" href="/static/bootstrap/css/bootstrap.min.css"/>
     <script type="text/javascript" src="/static/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/static/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="/static/custom/css/styles.css"/>
-    <script type="text/javascript" src="/static/custom/js/ui.js"></script>
 </head>
 <body>
-{% include 'top.html' %}
-
-<div class="col-lg-10 col-lg-offset-1">
-    <h2 class="page-header">showMe</h2>
+<div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 menu-container">
+    {% include 'top.html' %}
+    <h1 class="page-header pageTitle">showMe</h1>
 </div>
-
-<div class="col-md-12">
-    <div class="form-group">
-        <label for="LogArea">ApacheLog:</label>
-        <textarea class="form-control" rows="100" id="LogArea" data-name="LogBox">Test!</textarea>
+<div class="container-fluid">
+    <div class="row">
+        <!--# side menu-->
+        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 content-tab-container">
+            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3 content-tab-menu">
+                <div class="list-group">
+                    <a href="#" class="list-group-item active text-center">
+                        <i class="fa fa-desktop fa-3x"></i><br/>Apache
+                    </a>
+                    <a href="#" class="list-group-item text-center">
+                        <i class="fa fa-database fa-3x"></i><br/>Mysql
+                    </a>
+                    <a href="#" class="list-group-item text-center">
+                        <i class="fa fa-exclamation-triangle fa-3x"></i><br/>PHP
+                    </a>
+                    <a href="#" class="list-group-item text-center">
+                        <i class="fa fa-area-chart fa-3x"></i><br/>Localhost
+                    </a>
+                    <a href="#" class="list-group-item text-center">
+                        <i class="fa fa-plus fa-3x"></i><br/>Add log
+                    </a>
+                </div>
+            </div>
+            <!--content panels-->
+            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 content-tab">
+                <!-- apache section -->
+                <div class="content-tab-content active">
+                    <h1 style="margin-top: 0;color:#1b6d85">Apache</h1>
+                    <h2 style="margin-top: 0;color:#1b6d85">Coming Soon</h2>
+                </div>
+                <!-- mysql section -->
+                <div class="content-tab-content">
+                    <h1 style="margin-top: 0;color:#1b6d85">Mysql</h1>
+                    <h2 style="margin-top: 0;color:#1b6d85">Coming Soon</h2>
+                </div>
+                <!-- other section -->
+                <div class="content-tab-content">
+                    <h1 style="margin-top: 0;color:#1b6d85">PHP</h1>
+                    <h2 style="margin-top: 0;color:#1b6d85">Coming Soon</h2>
+                </div>
+                <div class="content-tab-content">
+                    <h1 style="margin-top: 0;color:#1b6d85">Localhost</h1>
+                    <h2 style="margin-top: 0;color:#1b6d85">Coming Soon</h2>
+                </div>
+                <div class="content-tab-content">
+                    <h1 style="margin-top: 0;color:#1b6d85">Add log</h1>
+                    <h2 style="margin-top: 0;color:#1b6d85">Coming Soon</h2>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+<script>
+    $(document).ready(function () {
+        $("div.content-tab-menu>div.list-group>a").click(function (e) {
+            e.preventDefault();
+            $(this).siblings('a.active').removeClass("active");
+            $(this).addClass("active");
+            var index = $(this).index();
+            $("div.content-tab>div.content-tab-content").removeClass("active");
+            $("div.content-tab>div.content-tab-content").eq(index).addClass("active");
+        });
+    });
+</script>
 </body>
 </html>

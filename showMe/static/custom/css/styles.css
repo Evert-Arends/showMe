@@ -1,3 +1,18 @@
+body{
+    background-color: #382c53;
+}
+
+@media screen and (max-width: 768px) {
+    div.content-tab-container {
+        margin-left: 1%;
+        width: 98%;
+    }
+
+    div.menu-container {
+        margin-left: 1%;
+        width: 98%;
+    }
+}
 /*  content tab */
 div.content-tab-container {
     z-index: 10;
@@ -5,11 +20,8 @@ div.content-tab-container {
     padding: 0 !important;
     border-radius: 4px;
     -moz-border-radius: 4px;
-    border: 1px solid #ddd;
+    border: 2px solid white;
     margin-top: 20px;
-    -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
-    -moz-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
     background-clip: padding-box;
     opacity: 0.97;
     filter: alpha(opacity=97);
@@ -29,6 +41,19 @@ div.content-tab-menu div.list-group > a {
     margin-bottom: 0;
 }
 
+.list-group-item{
+    background-color: #555;
+}
+
+a.list-group-item{
+    color: yellowgreen;
+}
+
+a.list-group-item:hover {
+    color: yellowgreen;
+    background-color: #777;
+}
+
 div.content-tab-menu div.list-group > a .glyphicon,
 div.content-tab-menu div.list-group > a .fa {
     color: yellowgreen;
@@ -46,7 +71,7 @@ div.content-tab-menu div.list-group > a.active,
 div.content-tab-menu div.list-group > a.active .glyphicon,
 div.content-tab-menu div.list-group > a.active .fa {
     background-color: yellowgreen;
-    border-color: yellowgreen;
+    border-color: white;
     color: #ffffff;
 }
 
@@ -72,6 +97,11 @@ div.content-tab div.content-tab-content:not(.active) {
     display: none;
 }
 
+.pageTitle{
+    border-bottom: 1px solid transparent;
+    color: white;
+}
+
 /* navbar */
 
 .navbar-default{
@@ -79,13 +109,40 @@ div.content-tab div.content-tab-content:not(.active) {
     border-color: transparent;
 }
 
-.navbar-default .navbar-nav > li > a{
-    background-color: transparent;
-    border-radius: 5px;
-    border: 2px solid #555;
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-bottom: 5px;
-    margin-top: 2px;
-    padding: 10px;
+@media screen and (max-width: 767px) {
+    .navbar-default .navbar-nav > li > a{
+        background-color: #555;
+        color: white;
+        border-radius: 5px;
+        border: 2px solid white;
+        margin-top: 2px;
+    }
+
+    .navbar-default .navbar-nav > li > a:hover{
+        background-color: yellowgreen;
+        color: #555;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .navbar-default .navbar-nav > li > a{
+        background-color: #555;
+        color: white;
+        border-radius: 5px;
+        border: 2px solid white;
+        margin-left: 25px;
+        margin-right: -15px;
+        margin-bottom: 5px;
+        margin-top: 5px;
+        padding: 10px;
+    }
+    .navbar-default .navbar-nav > li > a:hover{
+        background-color: yellowgreen;
+        color: #555;
+    }
+}
+
+.menu-container{
+    padding-left: 0;
+    padding-right: 0;
 }

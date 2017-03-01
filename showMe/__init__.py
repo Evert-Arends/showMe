@@ -7,7 +7,7 @@ __author__ = "Evert Arends"
 
 app = Flask(import_name=__name__,
             static_folder=None,
-            template_folder='templates')
+            template_folder='views')
 
 app.config['SECRET_KEY'] = settings.app_secret
 app.config['dir_base'] = os.path.dirname(os.path.abspath(__file__))

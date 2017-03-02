@@ -1,7 +1,7 @@
 from flask import render_template, send_from_directory
-from flask import request
-from controllers import services
+
 from showMe import app
+from showMe.bin import services
 
 addService = services.Services
 

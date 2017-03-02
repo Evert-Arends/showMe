@@ -1,16 +1,14 @@
 from flask import render_template, send_from_directory
 from flask import request
-
+from controllers import services
 from showMe import app
-import settings
+
+addService = services.Services
 
 
 @app.route("/", methods=['POST', 'GET'])
 def index():
-    if request.method == 'POST':
-        new_title = request.form.get("title")
-        new_icon = request.form.get("sel_icon")
-        print new_icon, new_title
+    addService.add_service()
     return render_template("index.html")
 
 

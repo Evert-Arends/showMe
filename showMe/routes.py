@@ -3,12 +3,12 @@ from flask import render_template, send_from_directory
 from showMe import app
 from showMe.bin import services
 
-addService = services.Services
+serviceHandler = services.Services
 
 
 @app.route("/", methods=['POST', 'GET'])
 def index():
-    addService.add_service()
+    serviceHandler.add_service()
     return render_template("index.html")
 
 

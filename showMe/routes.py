@@ -1,4 +1,3 @@
-import codecs
 from flask import render_template, send_from_directory
 
 from showMe import app

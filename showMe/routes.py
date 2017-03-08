@@ -1,8 +1,9 @@
+import codecs
 from flask import render_template, send_from_directory
 
 from showMe import app
 
-from showMe.bin import services
+from showMe.bin import services, tail
 
 serviceHandler = services.Services
 
@@ -16,9 +17,24 @@ def index():
 @app.route("/log/<path:path>")
 def logging(path):
     if path == 'Apache':
-        logfile = open('/var/log/httpd/error_log', 'r')
-        log = logfile.read()
-        # log = 'tetthfdsfhdsdf'
+        logfile = '/var/log/httpd/error_log'
+        f = codecs.open(logfile, "r", 'utf-8')
+        # f = open(logfile, "r")
+        log = tail.tail(f, 200, 4098)
+        total_log = ""
+        for line in log:
+            total_log += line
+        log = total_log.replace('\\n', ' <br /> ')
+
+    if path == 'Mysql':
+        logfile = '/var/log/httpd/error_log'
+        f = codecs.open(logfile, "r", 'utf-8')
+        # f = open(logfile, "r")
+        log = tail.tail(f, 200, 4098)
+        total_log = ""
+        for line in log:
+            total_log += line
+        log = total_log.replace('\\n', ' <br /> ')
     else:
         log = 'No use able logfile.'
     return render_template("log.html", log=log)

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>ShowMe</title>
     <script type="text/javascript" src="/static/jQuery/jquery-2.2.4.js"></script>
+    <script type="text/javascript" src="/static/custom/js/ui.js"></script>
     <link rel="stylesheet" type="text/css" href="/static/bootstrap/css/bootstrap.min.css"/>
     <script type="text/javascript" src="/static/bootstrap/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="/static/font-awesome/css/font-awesome.min.css">
@@ -38,11 +39,14 @@
                 </div>
             </div>
             <!--content panels-->
-            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 content-tab">
+            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 content-tab">
                 <!-- apache section -->
                 <div class="content-tab-content active">
                     <h1 style="margin-top: 0;color:#1b6d85">Apache</h1>
-                    <h2 style="margin-top: 0;color:#1b6d85">Coming Soon</h2>
+                    <div class="col-md-12">
+                        <label for="LogArea"></label><textarea id="LogArea" class="form-control" rows="10"></textarea>
+
+                    </div>
                 </div>
                 <!-- mysql section -->
                 <div class="content-tab-content">

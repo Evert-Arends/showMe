@@ -1,7 +1,7 @@
 from flask import render_template, send_from_directory
+from flask import request
 
 from showMe import app
-
 from showMe.bin import services
 
 serviceHandler = services.Services
@@ -9,7 +9,8 @@ serviceHandler = services.Services
 
 @app.route("/", methods=['POST', 'GET'])
 def index():
-    serviceHandler.add_service()
+    if 'add_s' in request.form:
+        serviceHandler.add_service()
     return render_template("index.html")
 
 
@@ -20,7 +21,7 @@ def logging(path):
         log = logfile.read()
         # log = 'tetthfdsfhdsdf'
     else:
-        log = 'No use able logfile.'
+        log = 'No usable logfile.'
     return render_template("log.html", log=log)
 
 

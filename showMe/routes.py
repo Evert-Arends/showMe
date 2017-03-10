@@ -14,6 +14,18 @@ def index():
     return render_template("index.html")
 
 
+@app.route("/edit_service/", methods=['POST', 'GET'])
+def edit_service():
+    serviceHandler.edit_service()
+    return render_template("edit_server.html")
+
+
+@app.route("/del_service/<title>", methods=['POST', 'GET'])
+def del_service(title):
+    serviceHandler.delete_service(title)
+    return render_template("del_service.html")
+
+
 @app.route("/log/<path:path>")
 def logging(path):
     if path == 'Apache':

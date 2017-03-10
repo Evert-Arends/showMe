@@ -22,7 +22,5 @@ class Services:
             print edited_icon, edited_title, edited_path
 
     @staticmethod
-    def delete_service():
-        if request.method == 'POST':
-            del_title = request.form.get("title")
-            print del_title
+    def delete_service(title):
+        print title

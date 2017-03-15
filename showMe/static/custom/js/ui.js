@@ -11,7 +11,9 @@ $(document).ready(function () {
 function getLog(log) {
     var log_url = '/log/' + log;
     $.get(log_url).then(function (responseData) {
-         $('#LogArea').val(responseData);
+        var $textarea = $('#LogArea');
+         $textarea.val(responseData);
+         $textarea.scrollTop($textarea[0].scrollHeight);
         return true;
     });
 }

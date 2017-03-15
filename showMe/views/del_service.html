@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ShowMe</title>
+    <script type="text/javascript" src="/static/jQuery/jquery-2.2.4.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/bootstrap/css/bootstrap.min.css"/>
+    <script type="text/javascript" src="/static/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/static/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/custom/css/styles.css"/>
+</head>
+<body>
+<div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 menu-container">
+    {% include 'top.html' %}
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Are you sure?</h3>
+                </div>
+                <div class="panel-body">
+                    <form class="form-outline" method="post" action="/">
+                        <input class="btn btn-default delete-button" type="submit" value="Delete"/>
+                        <a class="btn btn-default delete-button custom-margin" href="/">Cancel</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

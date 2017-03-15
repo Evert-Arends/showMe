@@ -14,10 +14,10 @@ def index():
     return render_template("index.html")
 
 
-@app.route("/edit_service/", methods=['POST', 'GET'])
-def edit_service():
-    serviceHandler.edit_service()
-    return render_template("edit_server.html")
+@app.route("/edit_service/<title>", methods=['POST', 'GET'])
+def edit_service(title):
+    serviceHandler.edit_service(title)
+    return render_template("edit_service.html")
 
 
 @app.route("/del_service/<title>", methods=['POST', 'GET'])
@@ -29,7 +29,7 @@ def del_service(title):
 @app.route("/log/<path:path>")
 def logging(path):
     if path == 'Apache':
-        logfile = open('/var/log/httpd/error_log', 'r')
+        logfile = open('/var/log/apache2/error.log', 'r')
         log = logfile.read()
         # log = 'tetthfdsfhdsdf'
     else:

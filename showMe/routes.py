@@ -18,15 +18,15 @@ def index():
     return render_template("index.html")
 
 
-@app.route("/edit_service/", methods=['POST', 'GET'])
-def edit_service():
+@app.route("/edit_service/<path:path>", methods=['POST', 'GET'])
+def edit_service(path):
     serviceHandler.edit_service()
     return render_template("edit_server.html")
 
 
-@app.route("/del_service/<title>", methods=['POST', 'GET'])
-def del_service(title):
-    serviceHandler.delete_service(title)
+@app.route("/del_service/<path:path>", methods=['POST', 'GET'])
+def del_service(path):
+    serviceHandler.delete_service(path)
     return render_template("del_service.html")
 
 

@@ -1,18 +1,33 @@
 import codecs
 
 from flask import render_template, send_from_directory
+from flask import request
 
 from showMe import app
 
 from showMe.bin import services, tail
+
 
 serviceHandler = services.Services
 
 
 @app.route("/", methods=['POST', 'GET'])
 def index():
-    serviceHandler.add_service()
+    if 'add_s' in request.form:
+        serviceHandler.add_service()
     return render_template("index.html")
+
+
+@app.route("/edit_service/", methods=['POST', 'GET'])
+def edit_service():
+    serviceHandler.edit_service()
+    return render_template("edit_server.html")
+
+
+@app.route("/del_service/<title>", methods=['POST', 'GET'])
+def del_service(title):
+    serviceHandler.delete_service(title)
+    return render_template("del_service.html")
 
 
 @app.route("/log/<path:path>")
@@ -37,7 +52,7 @@ def logging(path):
             total_log += line
         log = total_log.replace('\\n', ' <br /> ')
     else:
-        log = 'No use able logfile.'
+        log = 'No usable logfile.'
     return render_template("log.html", log=log)
 
 

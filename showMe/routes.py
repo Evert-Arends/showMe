@@ -1,22 +1,20 @@
-import codecs
-
 from flask import render_template, send_from_directory
 from flask import request
 
 from showMe import app
-
-from showMe.bin import services, tail
-
+from showMe.bin import services
 
 serviceHandler = services.Services
 
 
 @app.route("/", methods=['POST', 'GET'])
 def index():
+    serviceHandler.get_services()
+    print "test"
     if 'add_s' in request.form:
         serviceHandler.add_service()
     return render_template("index.html")
-
+  
 
 @app.route("/edit_service/<path:path>", methods=['POST', 'GET'])
 def edit_service(path):
@@ -33,24 +31,9 @@ def del_service(path):
 @app.route("/log/<path:path>")
 def logging(path):
     if path == 'Apache':
-        logfile = '/var/log/httpd/error_log'
-        f = codecs.open(logfile, "r", 'utf-8')
-        # f = open(logfile, "r")
-        log = tail.tail(f, 200, 4098)
-        total_log = ""
-        for line in log:
-            total_log += line
-        log = total_log.replace('\\n', ' <br /> ')
-
-    if path == 'Mysql':
-        logfile = '/var/log/httpd/error_log'
-        f = codecs.open(logfile, "r", 'utf-8')
-        # f = open(logfile, "r")
-        log = tail.tail(f, 200, 4098)
-        total_log = ""
-        for line in log:
-            total_log += line
-        log = total_log.replace('\\n', ' <br /> ')
+        logfile = open('/var/log/apache2/error.log', 'r')
+        log = logfile.read()
+        # log = 'tetthfdsfhdsdf'
     else:
         log = 'No usable logfile.'
     return render_template("log.html", log=log)

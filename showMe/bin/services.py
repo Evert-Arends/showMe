@@ -6,6 +6,10 @@ class Services:
         print "\n"
 
     @staticmethod
+    def get_services():
+        print "im getting the items now."
+
+    @staticmethod
     def add_service():
         if request.method == 'POST':
             new_title = request.form.get("title")

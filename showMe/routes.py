@@ -9,6 +9,7 @@ serviceHandler = services.Services
 
 @app.route("/", methods=['POST', 'GET'])
 def index():
+    serviceHandler.get_services()
     if 'add_s' in request.form:
         serviceHandler.add_service()
     return render_template("index.html")

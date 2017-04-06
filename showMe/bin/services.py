@@ -1,3 +1,4 @@
+import sqlite3 as sql
 from flask import request
 
 
@@ -6,8 +7,19 @@ class Services:
         print "\n"
 
     @staticmethod
+    def connect_db():
+        conn = sql.connect('showMe/db.sqlite')
+        return conn
+
+    @staticmethod
     def get_services():
-        print "im getting the items now."
+        conn = Services.connect_db()
+
+        cur = conn.cursor()
+        cur.execute("SELECT * FROM logs")
+
+        rows = cur.fetchall()
+        return rows
 
     @staticmethod
     def add_service():

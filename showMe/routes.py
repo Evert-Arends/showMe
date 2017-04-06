@@ -9,11 +9,11 @@ serviceHandler = services.Services
 
 @app.route("/", methods=['POST', 'GET'])
 def index():
-    serviceHandler.get_services()
-    print "test"
+    logs = serviceHandler.get_services()
+    print logs
     if 'add_s' in request.form:
         serviceHandler.add_service()
-    return render_template("index.html")
+    return render_template("index.html", logs=logs)
 
 
 @app.route("/edit_service/<title>", methods=['POST', 'GET'])

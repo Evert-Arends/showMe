@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>ShowMe</title>
     <script type="text/javascript" src="/static/jQuery/jquery-2.2.4.js"></script>
-    <script type="text/javascript" src="/static/custom/js/ui.js"></script>
     <link rel="stylesheet" type="text/css" href="/static/bootstrap/css/bootstrap.min.css"/>
     <script type="text/javascript" src="/static/bootstrap/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="/static/font-awesome/css/font-awesome.min.css">
@@ -42,6 +41,19 @@
                         <h1 class="item-header">{{ item.name }}</h1>
                         <a href='/del_service/{{ item.name }}'>Delete</a>
                         <a href='/edit_service/{{ item.name }}'>Edit</a>
+                        <textarea id="{{ item.name }}"></textarea>
+                        <script>
+                            $(document).ready(function () {
+                                var log_url = '/log/' + '{{ item.name }}';
+                                $.get(log_url).then(function (responseData) {
+                                    var $textarea = $('#{{ item.name }}');
+                                    $textarea.val(responseData);
+                                    console.log(responseData);
+                                    $textarea.scrollTop($textarea[0].scrollHeight);
+                                    return true;
+                                });
+                            });
+                        </script>
                     </div>
                 {% endfor %}
             </div>

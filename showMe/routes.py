@@ -3,6 +3,7 @@ from flask import request
 
 from showMe import app
 from showMe.bin import services
+from showMe.controllers.models import logs
 
 serviceHandler = services.Services
 
@@ -30,11 +31,12 @@ def del_service(title):
 
 @app.route("/log/<path:path>")
 def logging(path):
-    if path == 'Apache':
-        logfile = open('/var/log/apache2/error.log', 'r')
-        log = logfile.read()
+    if path == '':
+        log = "No logs file found."
     else:
-        log = 'No usable logfile.'
+        open_file = logs.query.filter_by(name=path)
+        logfile = open(open_file[0].path, 'r')
+        log = logfile.read()
     return render_template("log.html", log=log)
 
 

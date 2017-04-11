@@ -19,14 +19,14 @@
     <div class="row">
         <!--# side menu-->
         <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 content-tab-container">
-            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3 content-tab-menu">
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-3 content-tab-menu">
                 <div class="list-group">
                     <a href="#" class="list-group-item active text-center">
                         <i class="fa fa-pencil fa-3x"></i><br/> Add service
                     </a>
                     {% for item in logs %}
                         <a href="#" class="list-group-item text-center">
-                            <i class="fa fa-certificate fa-3x"></i><br/>{{ item.1 }}
+                            <i class="fa {{ item.icon }} fa-3x"></i><br/>{{ item.name }}
                         </a>
                     {% endfor %}
                 </div>
@@ -39,9 +39,9 @@
                 </div>
                 {% for item in logs %}
                     <div class="content-tab-content">
-                        <h1 class="item-header">{{ item.1 }}</h1>
-                        <a href='/del_service/{{ item.1 }}'>Delete</a>
-                        <a href='/edit_service/{{ item.1 }}'>Edit</a>
+                        <h1 class="item-header">{{ item.name }}</h1>
+                        <a href='/del_service/{{ item.name }}'>Delete</a>
+                        <a href='/edit_service/{{ item.name }}'>Edit</a>
                     </div>
                 {% endfor %}
             </div>

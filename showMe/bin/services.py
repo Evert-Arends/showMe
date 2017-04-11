@@ -1,5 +1,5 @@
-import sqlite3 as sql
 from flask import request
+from showMe.controllers.models import logs
 
 
 class Services:
@@ -7,18 +7,8 @@ class Services:
         print "\n"
 
     @staticmethod
-    def connect_db():
-        conn = sql.connect('showMe/db.sqlite')
-        return conn
-
-    @staticmethod
     def get_services():
-        conn = Services.connect_db()
-
-        cur = conn.cursor()
-        cur.execute("SELECT * FROM logs")
-
-        rows = cur.fetchall()
+        rows = logs.query.all()
         return rows
 
     @staticmethod

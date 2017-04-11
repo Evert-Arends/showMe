@@ -33,7 +33,6 @@ def logging(path):
     if path == 'Apache':
         logfile = open('/var/log/apache2/error.log', 'r')
         log = logfile.read()
-        # log = 'tetthfdsfhdsdf'
     else:
         log = 'No usable logfile.'
     return render_template("log.html", log=log)

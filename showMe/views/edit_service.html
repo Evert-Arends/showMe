@@ -14,33 +14,32 @@
     {% include 'top.html' %}
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
-            <div class="panel panel-default">
+            <div class="panel panel-default edit_form">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Edit service?</h3>
+                    <h3 class="panel-title">Edit service</h3>
                 </div>
                 <div class="panel-body">
                     <form class="form-inline" method="post" action="/">
                         <div class="form-group">
                             <label for="title">Title</label><br>
-                            <input type="text" class="form-control" name="title" id="title" placeholder="Title">
+                            <input required type="text" class="form-control" name="title" id="title" placeholder="Title">
                         </div>
                         <br><br>
                         <div class="form-group">
                             <label for="path">Path</label><br>
-                            <input type="text" class="form-control" name="path" id="path" placeholder="Path">
+                            <input required type="text" class="form-control" name="path" id="path" placeholder="Path">
                         </div>
                         <br><br>
                         <div class="form-group">
                             <label for="sel_icon">Select icon:</label><br>
-                            <select class="form-control" id="sel_icon" name="sel_icon">
+                            <select required class="form-control" id="sel_icon" name="sel_icon">
+                                <option value="">Choose icon</option>
                                 <option value="fa-address-book">address-book</option>
                                 <option value="fa-address-book-o">address-book-o</option>
                                 <option value="fa-address-card">address-card</option>
                                 <option value="fa-address-card-o">address-card-o</option>
                                 <option value="fa-adjust">adjust</option>
-                                <option value="fa-american-sign-language-interpreting">
-                                    american-sign-language-interpreting
-                                </option>
+                                <option value="fa-american-sign-language-interpreting">american-sign-language-interpreting</option>
                                 <option value="fa-anchor">anchor</option>
                                 <option value="fa-archive">archive</option>
                                 <option value="fa-area-chart">area-chart</option>

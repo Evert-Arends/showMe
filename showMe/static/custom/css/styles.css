@@ -150,3 +150,23 @@ div.content-tab div.content-tab-content:not(.active) {
     margin-top: 0!important;
     color: #1b6d85!important;
 }
+
+.edit_form{
+    border-color: yellowgreen;
+}
+
+.edit_form > .panel-heading {
+    color: #ffffff;
+    background-color: yellowgreen;
+    border-color: yellowgreen;
+}
+
+.del_panel{
+    border-color: #843534;
+}
+
+.del_panel > .panel-heading {
+    color: #ffffff;
+    background-color: #843534;
+    border-color: #843534;
+}

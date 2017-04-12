@@ -2,7 +2,7 @@ from flask import request
 
 from showMe import db
 from showMe.controllers.models import logs
-
+from sqlalchemy import exc
 
 class Services:
     def __init__(self):
@@ -34,5 +34,11 @@ class Services:
             print edited_icon, edited_title, edited_path, title
 
     @staticmethod
-    def delete_service(title):
-        print title
+    def delete_service(path):
+        try:
+            log_to_delete = logs.query.filter_by(name=path).first()
+            db.session.delete(log_to_delete)
+            db.session.commit()
+            return True
+        except exc.SQLAlchemyError:
+            return False

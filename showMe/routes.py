@@ -10,25 +10,31 @@ serviceHandler = services.Services
 
 @app.route("/", methods=['POST', 'GET'])
 def index():
-    logs = serviceHandler.get_services()
-    print logs
+    logs_to_page = serviceHandler.get_services()
+    print logs_to_page
     if 'add_s' in request.form:
         response = serviceHandler.add_service()
         if response:
-            logs = serviceHandler.get_services()
-    return render_template("index.html", logs=logs)
+            logs_to_page = serviceHandler.get_services()
+    return render_template("index.html", logs=logs_to_page)
 
 
-@app.route("/edit_service/<title>", methods=['POST', 'GET'])
-def edit_service(title):
-    serviceHandler.edit_service(title)
+@app.route("/edit_service/<path:path>", methods=['POST', 'GET'])
+def edit_service(path):
+    serviceHandler.edit_service(path)
     return render_template("edit_service.html")
 
 
-@app.route("/del_service/<title>", methods=['POST', 'GET'])
-def del_service(title):
-    serviceHandler.delete_service(title)
-    return render_template("del_service.html")
+@app.route("/del_service/<path:path>", methods=['POST', 'GET'])
+def del_service(path):
+    response = ""
+    if 'del_s' in request.form:
+        delete = serviceHandler.delete_service(path)
+        if delete:
+            response = True
+        else:
+            response = False
+    return render_template("del_service.html", response=response)
 
 
 @app.route("/log/<path:path>")

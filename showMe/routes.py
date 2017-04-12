@@ -13,7 +13,8 @@ def index():
     logs = serviceHandler.get_services()
     print logs
     if 'add_s' in request.form:
-        serviceHandler.add_service()
+        response = serviceHandler.add_service()
+        print response
     return render_template("index.html", logs=logs)
 
 

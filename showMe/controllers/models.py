@@ -7,9 +7,9 @@ class logs(db.Model):
     icon = db.Column(db.String(120), unique=False)
     path = db.Column(db.String(120), unique=True)
 
-    def __init__(self, name, logo, path):
+    def __init__(self, name, icon, path):
         self.name = name
-        self.logo = logo
+        self.icon = icon
         self.path = path
 
     def __repr__(self):

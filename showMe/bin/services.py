@@ -1,4 +1,6 @@
 from flask import request
+
+from showMe import db
 from showMe.controllers.models import logs
 
 
@@ -17,7 +19,12 @@ class Services:
             new_title = request.form.get("title")
             new_icon = request.form.get("sel_icon")
             new_path = request.form.get("path")
-            print new_icon, new_title, new_path
+            print new_icon
+            insert = logs(new_title, new_icon, new_path)
+            db.session.add(insert)
+            db.session.commit()
+            added = new_title + " added to database."
+        return added
 
     @staticmethod
     def edit_service(title):

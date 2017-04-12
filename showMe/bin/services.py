@@ -23,8 +23,7 @@ class Services:
             insert = logs(new_title, new_icon, new_path)
             db.session.add(insert)
             db.session.commit()
-            added = new_title + " added to database."
-        return added
+        return True
 
     @staticmethod
     def edit_service(title):

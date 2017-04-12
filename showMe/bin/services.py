@@ -1,5 +1,8 @@
 from flask import request
 
+from showMe import db
+from showMe.controllers.models import logs
+from sqlalchemy import exc
 
 class Services:
     def __init__(self):
@@ -7,7 +10,8 @@ class Services:
 
     @staticmethod
     def get_services():
-        print "im getting the items now."
+        rows = logs.query.all()
+        return rows
 
     @staticmethod
     def add_service():
@@ -15,7 +19,11 @@ class Services:
             new_title = request.form.get("title")
             new_icon = request.form.get("sel_icon")
             new_path = request.form.get("path")
-            print new_icon, new_title, new_path
+            print new_icon
+            insert = logs(new_title, new_icon, new_path)
+            db.session.add(insert)
+            db.session.commit()
+        return True
 
     @staticmethod
     def edit_service(title):
@@ -26,5 +34,11 @@ class Services:
             print edited_icon, edited_title, edited_path, title
 
     @staticmethod
-    def delete_service(title):
-        print title
+    def delete_service(path):
+        try:
+            log_to_delete = logs.query.filter_by(name=path).first()
+            db.session.delete(log_to_delete)
+            db.session.commit()
+            return True
+        except exc.SQLAlchemyError:
+            return False

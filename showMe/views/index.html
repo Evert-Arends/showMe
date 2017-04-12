@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>ShowMe</title>
     <script type="text/javascript" src="/static/jQuery/jquery-2.2.4.js"></script>
-    <script type="text/javascript" src="/static/custom/js/ui.js"></script>
     <link rel="stylesheet" type="text/css" href="/static/bootstrap/css/bootstrap.min.css"/>
     <script type="text/javascript" src="/static/bootstrap/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="/static/font-awesome/css/font-awesome.min.css">
@@ -19,61 +18,55 @@
     <div class="row">
         <!--# side menu-->
         <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 content-tab-container">
-            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3 content-tab-menu">
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-3 content-tab-menu">
                 <div class="list-group">
                     <a href="#" class="list-group-item active text-center">
-                        <i class="fa fa-desktop fa-3x"></i><br/>Apache
+                        <i class="fa fa-pencil fa-3x"></i><br/> Add service
                     </a>
-                    <a href="#" class="list-group-item text-center">
-                        <i class="fa fa-database fa-3x"></i><br/>Mysql
+                    {% for item in logs %}
+
+                    <a  href="#"
+                        class="list-group-item text-center"
+                        onclick="
+                            var element = document.getElementById('{{ item.name }}');
+                            element.scrollTop = element.scrollHeight;"
+                        >
+                        <i class="fa {{ item.icon }} fa-3x"></i><br/>{{ item.name }}
                     </a>
-                    <a href="#" class="list-group-item text-center">
-                        <i class="fa fa-exclamation-triangle fa-3x"></i><br/>PHP
-                    </a>
-                    <a href="#" class="list-group-item text-center">
-                        <i class="fa fa-area-chart fa-3x"></i><br/>Localhost
-                    </a>
-                    <a href="#" class="list-group-item text-center">
-                        <i class="fa fa-plus fa-3x"></i><br/>Add log
-                    </a>
+                    {% endfor %}
                 </div>
             </div>
             <!--content panels-->
-            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 content-tab">
-                <!-- apache section -->
-                <div class="content-tab-content active">
-
-                    <h1 class="item-header">Apache</h1>
-                    <a href='/del_service/apache'>Delete</a>
-                    <a href='/edit_service/apache'>Edit</a>
-                    <div class="col-md-12">
-                        <label for="LogArea"></label><textarea id="LogArea" class="form-control" rows="10"></textarea>
-                    </div>
-                </div>
-                <!-- mysql section -->
-                <div class="content-tab-content">
-                    <h1 class="item-header">Mysql</h1>
-                    <h2 class="item-header">Coming Soon</h2>
-                    <a href='/del_service/mysql'>Delete</a>
-                    <a href='/edit_service/mysql'>Edit</a>
-                </div>
-                <!-- other section -->
-                <div class="content-tab-content">
-                    <h1 class="item-header">PHP</h1>
-                    <h2 class="item-header">Coming Soon</h2>
-                    <a href='/del_service/php'>Delete</a>
-                    <a href='/edit_service/php'>Edit</a>
-                </div>
-                <div class="content-tab-content">
-                    <h1 class="item-header">Localhost</h1>
-                    <h2 class="item-header">Coming Soon</h2>
-                    <a href='/del_service/localhost'>Delete</a>
-                    <a href='/edit_service/localhost'>Edit</a>
-                </div>
-                <div class="content-tab-content">
+            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-9 content-tab">
+                <div class="content-tab-content active" style="margin-bottom: 20px;">
                     <h1 class="item-header">Add service</h1>
                     {% include 'add_service.html' %}
                 </div>
+                {% for item in logs %}
+                <div class="content-tab-content">
+                    <h1 class="item-header">{{ item.name }}</h1>
+                    <a href='/del_service/{{ item.name }}'>Delete</a>
+                    <a href='/edit_service/{{ item.name }}'>Edit</a>
+                    <textarea
+                        title="Logging area"
+                        readonly
+                        class="col-md-12 col-lg-12 col-sm-12 col-xs-12"
+                        style="min-height:500px; margin-bottom: 20px; position: relative; resize: none;"
+                        id="{{ item.name }}">
+                    </textarea>
+                    <script>
+                        $(document).ready(function () {
+                            var log_url = '/log/' + '{{ item.name }}';
+                            var name = '#{{ item.name }}';
+                            $.get(log_url).then(function (responseData) {
+                                var textarea = $(name);
+                                textarea.val(responseData);
+                                return true;
+                            });
+                        });
+                    </script>
+                </div>
+                {% endfor %}
             </div>
         </div>
     </div>

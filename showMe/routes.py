@@ -3,39 +3,48 @@ from flask import request
 
 from showMe import app
 from showMe.bin import services
+from showMe.controllers.models import logs
 
 serviceHandler = services.Services
 
 
 @app.route("/", methods=['POST', 'GET'])
 def index():
-    serviceHandler.get_services()
-    print "test"
+    logs_to_page = serviceHandler.get_services()
+    print logs_to_page
     if 'add_s' in request.form:
-        serviceHandler.add_service()
-    return render_template("index.html")
-  
+        response = serviceHandler.add_service()
+        if response:
+            logs_to_page = serviceHandler.get_services()
+    return render_template("index.html", logs=logs_to_page)
+
 
 @app.route("/edit_service/<path:path>", methods=['POST', 'GET'])
 def edit_service(path):
-    serviceHandler.edit_service()
-    return render_template("edit_server.html")
+    serviceHandler.edit_service(path)
+    return render_template("edit_service.html")
 
 
 @app.route("/del_service/<path:path>", methods=['POST', 'GET'])
 def del_service(path):
-    serviceHandler.delete_service(path)
-    return render_template("del_service.html")
+    response = ""
+    if 'del_s' in request.form:
+        delete = serviceHandler.delete_service(path)
+        if delete:
+            response = True
+        else:
+            response = False
+    return render_template("del_service.html", response=response)
 
 
 @app.route("/log/<path:path>")
 def logging(path):
-    if path == 'Apache':
-        logfile = open('/var/log/apache2/error.log', 'r')
-        log = logfile.read()
-        # log = 'tetthfdsfhdsdf'
+    if path == '':
+        log = "No logs file found."
     else:
-        log = 'No usable logfile.'
+        open_file = logs.query.filter_by(name=path)
+        logfile = open(open_file[0].path, 'r')
+        log = logfile.read()
     return render_template("log.html", log=log)
 
 

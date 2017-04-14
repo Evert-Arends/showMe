@@ -92,6 +92,7 @@ div.content-tab-content {
     background-color: #ffffff;
     padding-left: 20px;
     padding-top: 10px;
+    margin-bottom: 20px;
 }
 
 div.content-tab div.content-tab-content:not(.active) {
@@ -169,4 +170,11 @@ div.content-tab div.content-tab-content:not(.active) {
     color: #ffffff;
     background-color: #843534;
     border-color: #843534;
+}
+
+.logging-area{
+    min-height:500px;
+    margin-bottom: 20px;
+    position: relative;
+    resize: none;
 }

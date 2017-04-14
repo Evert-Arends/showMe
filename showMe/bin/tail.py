@@ -7,7 +7,6 @@ class TailLog:
 
     @staticmethod
     def tail(f, lines=1, _buffer=4098):
-        """Tail a file and get X lines from the end"""
         # place holder for the lines found
         lines_found = []
 

@@ -32,7 +32,6 @@ class Services:
                 new_title = request.form.get("title")
                 new_icon = request.form.get("sel_icon")
                 new_path = request.form.get("path")
-                print new_icon
                 insert = logs(new_title, new_icon, new_path)
                 db.session.add(insert)
                 db.session.commit()

@@ -12,7 +12,6 @@ fileTail = tail.TailLog
 @app.route("/", methods=['POST', 'GET'])
 def index():
     logs_to_page = serviceHandler.get_services()
-    print logs_to_page
     if 'add_s' in request.form:
         response = serviceHandler.add_service()
         if response:
@@ -26,7 +25,7 @@ def edit_service(path):
     update = ""
     if 'edit_s' in request.form:
         update = serviceHandler.edit_service(path)
-        if delete:
+        if update:
             update = True
         else:
             update = False
@@ -48,11 +47,10 @@ def del_service(path):
 @app.route("/log/<path:path>")
 def logging(path):
     if path == '':
-        log = "No logs file found."
+        log_content = "No logs file found."
     else:
         open_file = logs.query.filter_by(name=path)
         logfile = open(open_file[0].path, 'r')
-        log = logfile.read()
         log_content = fileTail.tail(logfile, 100, 4098)
     return render_template("log.html", log=log_content)
 

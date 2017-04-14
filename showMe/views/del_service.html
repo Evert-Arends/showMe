@@ -19,13 +19,17 @@
                     <h3 class="panel-title">Are you sure?</h3>
                 </div>
                 <div class="panel-body">
-                    <form class="form-outline" method="post" action="">
-                        <input name="del_s" class="btn btn-default delete-button" type="submit" value="Delete"/>
-                        <a class="btn btn-default delete-button custom-margin" href="/">Cancel</a>
-                    </form>
-                    {% if response == False %}
-                        <br>
-                    <div class="alert alert-danger"><i class="fa fa-exclamation"></i> There has been an error.</div>
+                    {% if response == '' %}
+                        <form class="form-outline" method="post" action="">
+                            <input name="del_s" class="btn btn-default delete-button" type="submit" value="Delete"/>
+                            <a class="btn btn-default delete-button custom-margin" href="/">Cancel</a>
+                        </form>
+                    {% elif response == True %}
+                        <div class="alert alert-success"><i class="fa fa-check"></i>   Item is successfully deleted.</div>
+                        <script>setTimeout(function(){window.location.href="/"},1500);</script>
+                    {% elif response == False %}
+                    <div class="alert alert-danger"><i class="fa fa-exclamation"></i>   There has been an error.</div>
+                        <script>setTimeout(function(){window.location.href="/"},1500);</script>
                     {% endif %}
                 </div>
             </div>

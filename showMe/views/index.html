@@ -24,48 +24,43 @@
                         <i class="fa fa-pencil fa-3x"></i><br/> Add service
                     </a>
                     {% for item in logs %}
-
-                    <a  href="#"
-                        class="list-group-item text-center"
-                        onclick="
-                            var element = document.getElementById('{{ item.name }}');
-                            element.scrollTop = element.scrollHeight;"
-                        >
-                        <i class="fa {{ item.icon }} fa-3x"></i><br/>{{ item.name }}
-                    </a>
+                        <a href="#" class="list-group-item text-center"
+                            onclick="var element = document.getElementById('{{ item.name }}');
+                            element.scrollTop = element.scrollHeight;">
+                            <i class="{{ item.icon }} fa-3x"></i><br/>{{ item.name }}
+                        </a>
                     {% endfor %}
                 </div>
             </div>
             <!--content panels-->
             <div class="col-lg-10 col-md-10 col-sm-10 col-xs-9 content-tab">
-                <div class="content-tab-content active" style="margin-bottom: 20px;">
+                <div class="content-tab-content active">
                     <h1 class="item-header">Add service</h1>
                     {% include 'add_service.html' %}
                 </div>
                 {% for item in logs %}
-                <div class="content-tab-content">
-                    <h1 class="item-header">{{ item.name }}</h1>
-                    <a href='/del_service/{{ item.name }}'>Delete</a>
-                    <a href='/edit_service/{{ item.name }}'>Edit</a>
-                    <textarea
-                        title="Logging area"
-                        readonly
-                        class="col-md-12 col-lg-12 col-sm-12 col-xs-12"
-                        style="min-height:500px; margin-bottom: 20px; position: relative; resize: none;"
-                        id="{{ item.name }}">
-                    </textarea>
-                    <script>
-                        $(document).ready(function () {
-                            var log_url = '/log/' + '{{ item.name }}';
-                            var name = '#{{ item.name }}';
-                            $.get(log_url).then(function (responseData) {
-                                var textarea = $(name);
-                                textarea.val(responseData);
-                                return true;
+                    <div class="content-tab-content">
+                        <h1 class="item-header">{{ item.name }}</h1>
+                        <a href='/del_service/{{ item.name }}'>Delete</a>
+                        <a href='/edit_service/{{ item.name }}'>Edit</a>
+                        <textarea
+                                title="Logging area"
+                                readonly
+                                class="col-md-12 col-lg-12 col-sm-12 col-xs-12 logging-area"
+                                id="{{ item.name }}">
+                        </textarea>
+                        <script>
+                            $(document).ready(function () {
+                                var log_url = '/log/' + '{{ item.name }}';
+                                var name = '#{{ item.name }}';
+                                $.get(log_url).then(function (responseData) {
+                                    var textarea = $(name);
+                                    textarea.val(responseData);
+                                    return true;
+                                });
                             });
-                        });
-                    </script>
-                </div>
+                        </script>
+                    </div>
                 {% endfor %}
             </div>
         </div>

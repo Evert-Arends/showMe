@@ -2,10 +2,11 @@ from flask import render_template, send_from_directory
 from flask import request
 
 from showMe import app
-from showMe.bin import services
+from showMe.bin import services, tail
 from showMe.controllers.models import logs
 
 serviceHandler = services.Services
+fileTail = tail.TailLog
 
 
 @app.route("/", methods=['POST', 'GET'])
@@ -21,8 +22,15 @@ def index():
 
 @app.route("/edit_service/<path:path>", methods=['POST', 'GET'])
 def edit_service(path):
-    serviceHandler.edit_service(path)
-    return render_template("edit_service.html")
+    called = serviceHandler.get_called(path)
+    update = ""
+    if 'edit_s' in request.form:
+        update = serviceHandler.edit_service(path)
+        if delete:
+            update = True
+        else:
+            update = False
+    return render_template("edit_service.html", called=called, update=update)
 
 
 @app.route("/del_service/<path:path>", methods=['POST', 'GET'])
@@ -45,7 +53,8 @@ def logging(path):
         open_file = logs.query.filter_by(name=path)
         logfile = open(open_file[0].path, 'r')
         log = logfile.read()
-    return render_template("log.html", log=log)
+        log_content = fileTail.tail(logfile, 100, 4098)
+    return render_template("log.html", log=log_content)
 
 
 @app.route('/static/<path:path>')

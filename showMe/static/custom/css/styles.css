@@ -173,7 +173,7 @@ div.content-tab div.content-tab-content:not(.active) {
 }
 
 .logging-area{
-    min-height:500px;
+    min-height: 500px;
     margin-bottom: 20px;
     position: relative;
     resize: none;
